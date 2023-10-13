@@ -71,11 +71,13 @@ const ExpenseForm = (props) => {
 
     const expensesData = {
       title: enteredTitle,
-      amount: enteredAmount,
+      amount: +enteredAmount,
       date: new Date(enteredDate),
     };
 
+    // Lifting the state up
     props.onSaveExpenseData(expensesData);
+
     setEnteredTitle("");
     setEnteredAmount("");
     setEnteredDate("");
@@ -83,8 +85,8 @@ const ExpenseForm = (props) => {
 
   return (
     <form onSubmit={submitHandler}>
-      <div className={classes.newExpenseControls}>
-        <div className={classes.newExpenseControl}>
+      <div className={classes['new-expense__controls']}>
+        <div className={classes['new-expense__control']}>
           <label>Title</label>
           <input
             type="text"
@@ -92,7 +94,7 @@ const ExpenseForm = (props) => {
             onChange={titleChangeHandler}
           />
         </div>
-        <div className={classes.newExpenseControl}>
+        <div className={classes['new-expense__control']}>
           <label>Amount</label>
           <input
             type="number"
@@ -102,7 +104,7 @@ const ExpenseForm = (props) => {
             onChange={amountChangeHandler}
           />
         </div>
-        <div className={classes.newExpenseControl}>
+        <div className={classes['new-expense__control']}>
           <label>Date</label>
           <input
             type="date"
@@ -113,7 +115,10 @@ const ExpenseForm = (props) => {
           />
         </div>
       </div>
-      <div className={classes.newExpenseActions}>
+      <div className={classes['new-expense__actions']}>
+        <button type="button" onClick={props.onCancel}>
+          Cancel
+        </button>
         <button type="submit">Add Expense</button>
       </div>
     </form>

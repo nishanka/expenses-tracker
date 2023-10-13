@@ -8,10 +8,10 @@ const ExpenseDate = (props) => {
   const year = props.date.getFullYear();
 
   return (
-    <div className={classes.expenseDate}>
-      <div className={classes.expenseDateMonth}>{month}</div>
-      <div className={classes.expenseDateYear}>{year}</div>
-      <div className={classes.expenseDateDay}>{day}</div>
+    <div className={classes['expense-date']}>
+      <div className={classes['expense-date__month']}>{month}</div>
+      <div className={classes['expense-date__year']}>{year}</div>
+      <div className={classes['expense-date__day']}>{day}</div>
     </div>
   );
 };

@@ -11,29 +11,28 @@ const ExpenseForm = () => {
   //     enteredAmount: "",
   //     enteredDate: "",
   //   });
-  /*
+
   const titleChangeHandler = (event) => {
     setEnteredTitle(event.target.value);
     // console.log(event.target.value);
     /* When updating the state depending on the previous state, 
     this way may cause issues when scheduling. 
     Therefore use alternative way of the state updating function added below. */
-  // setUserInput({
-  //   ...userInput,
-  //   enteredTitle: event.target.value,
-  // });
+    // setUserInput({
+    //   ...userInput,
+    //   enteredTitle: event.target.value,
+    // });
 
-  /* Best way is to Passing a function to that state update function. 
+    /* Best way is to Passing a function to that state update function. 
     And it will receive the previous state snapshot for that state updating function. 
     This way react guarantee that the state snapshot it gives here(e.g. prevState) 
     is always be the latest snapshot, by keeping all shduled snapshot updates in mind. */
-  // setUserInput((prevState) => {
-  //   /* Return the new state */
-  //   return { ...prevState, enteredTitle: event.target.value };
-  // });
-  //   };
+    // setUserInput((prevState) => {
+    //   /* Return the new state */
+    //   return { ...prevState, enteredTitle: event.target.value };
+    // });
+  };
 
-  /*
   const amountChangeHandler = (event) => {
     setEnteredAmount(event.target.value);
     // console.log(event.target.value);
@@ -45,8 +44,7 @@ const ExpenseForm = () => {
     //   return { ...prevState, enteredAmount: event.target.value };
     // });
   };
-  */
-  /*
+
   const dateChangeHandler = (event) => {
     setEnteredDate(event.target.value);
     // console.log(event.target.value);
@@ -58,17 +56,26 @@ const ExpenseForm = () => {
     //   return { ...prevState, enteredDate: event.target.value };
     // });
   };
-*/
+
+  /*
   const inputChangeHandler = (identifire, value) => {
     if (identifire === "title") {
       setEnteredTitle(value);
     } else if (identifire === "date") {
       setEnteredDate(value);
     } else setEnteredAmount(value);
-  };
+  };*/
 
   const submitHandler = (event) => {
     event.preventDefault();
+
+    const expensesData = {
+      title: enteredTitle,
+      amount: enteredAmount,
+      date: new Date(enteredDate),
+    };
+
+    console.log(expensesData);
   };
 
   return (
@@ -76,12 +83,7 @@ const ExpenseForm = () => {
       <div className={classes.newExpenseControls}>
         <div className={classes.newExpenseControl}>
           <label>Title</label>
-          <input
-            type="text"
-            onChange={(event) =>
-              inputChangeHandler("title", event.target.value)
-            }
-          />
+          <input type="text" onChange={titleChangeHandler} />
         </div>
         <div className={classes.newExpenseControl}>
           <label>Amount</label>
@@ -89,9 +91,7 @@ const ExpenseForm = () => {
             type="number"
             min="0.01"
             step="0.01"
-            onChange={(event) =>
-              inputChangeHandler("amount", event.target.value)
-            }
+            onChange={amountChangeHandler}
           />
         </div>
         <div className={classes.newExpenseControl}>
@@ -100,7 +100,7 @@ const ExpenseForm = () => {
             type="date"
             min="2019-01-01"
             max="2030-12-31"
-            onChange={(event) => inputChangeHandler("date", event.target.value)}
+            onChange={dateChangeHandler}
           />
         </div>
       </div>

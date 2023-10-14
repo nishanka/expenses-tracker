@@ -3,6 +3,7 @@ import React, { useState } from "react";
 import classes from "./NewExpense.module.css";
 import ExpenseForm from "./ExpenseForm";
 import ErrorModal from "../UI/ErrorModal";
+import Button from "../UI/Button";
 
 const NewExpense = (props) => {
   const [isEditing, setIsEditing] = useState(false);
@@ -56,7 +57,7 @@ const NewExpense = (props) => {
   return (
     <div className={classes['new-expense']}>
       {!isEditing && (
-        <button onClick={startEditingHandler}>Add New Expense</button>
+        <Button onClick={startEditingHandler}>Add New Expense</Button>
       )}
       {error && <ErrorModal title={error.title} message={error.message} onConfirm={errorModalhandler} />}
       {isEditing && (

@@ -42,7 +42,7 @@ const ExpenseForm = (props) => {
     // });
     // setUserInput((prevState) => {
     //   return { ...prevState, enteredAmount: event.target.value };
-    // });
+    // }); 
   };
 
   const dateChangeHandler = (event) => {

@@ -35,7 +35,7 @@ function App() {
   // );
 
   // Get Child Component data
-  const addExpensehandler = (expense) => {
+  const addExpenseHandler = (expense) => {
     setExpenses((prevExpenses) => {
       return [expense, ...prevExpenses];
     });
@@ -43,7 +43,7 @@ function App() {
 
   return (
     <div className="App">
-      <NewExpense onAddExpense={addExpensehandler} />
+      <NewExpense onAddExpense={addExpenseHandler} />
       <Expenses items={expenses} />
     </div>
   );
